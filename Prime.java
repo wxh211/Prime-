@@ -3,18 +3,24 @@ class FindPrime{
 		printPrime(1000);
 	}
 	public static void  printPrime(int n){
-		
-		for(int i=2;i<n;i++){
+		int[] prime = new int[1000];
+		int cnt=1;
+		prime[0]=2;
+		for(int i=3;i<n;i++){
 			
 			int count=0;
 			
-			for(int j=2;j<=i;j++){
+			for(int j=0;j<cnt;j++){
 				
-				if(i%j==0){
+				if(i%prime[j]==0){
 					count++;
 				}
-				if(j==i & count == 1){
-					System.out.print(i+" ");
+				if(prime[j]==i & count == 1){
+					prime[cnt++]=i;
+					for (int k=0;k<cnt ;k++ ) {
+						System.out.print(prime[k]+" ");
+					}
+					
 				}
 				if(count > 1){
 					break;
